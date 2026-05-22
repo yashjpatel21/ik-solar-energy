@@ -1,0 +1,1314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>IK Solar Energy | Powering Gujarat's Future</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Rajdhani:wght@400;500;600;700&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --red: #E51010;
+    --black: #0A0A0A;
+    --dark: #111111;
+    --darker: #0D0D0D;
+    --gold: #FFB800;
+    --white: #F5F5F0;
+    --grey: #888;
+    --light-grey: #1A1A1A;
+  }
+
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--black);
+    color: var(--white);
+    overflow-x: hidden;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 0; width: 100%; z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 18px 5%;
+    background: rgba(10,10,10,0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(229,16,16,0.15);
+  }
+
+  .nav-logo {
+    display: flex; align-items: center; gap: 12px;
+  }
+
+  .nav-logo img {
+    height: 46px; width: auto;
+    filter: drop-shadow(0 0 8px rgba(229,16,16,0.5));
+  }
+
+  .nav-brand {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.4rem;
+    letter-spacing: 3px;
+    color: var(--white);
+    line-height: 1;
+  }
+
+  .nav-brand span { color: var(--red); }
+
+  .nav-links {
+    display: flex; gap: 36px; list-style: none;
+  }
+
+  .nav-links a {
+    font-family: 'Rajdhani', sans-serif;
+    font-weight: 600; font-size: 0.85rem;
+    letter-spacing: 2px; text-transform: uppercase;
+    color: var(--grey); text-decoration: none;
+    transition: color .25s;
+  }
+
+  .nav-links a:hover { color: var(--red); }
+
+  .nav-cta {
+    background: var(--red);
+    color: #fff !important;
+    padding: 9px 22px;
+    border-radius: 2px;
+    transition: background .25s !important;
+  }
+
+  .nav-cta:hover { background: #c50e0e !important; color: #fff !important; }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 100vh;
+    display: flex; align-items: center;
+    position: relative;
+    overflow: hidden;
+    padding: 120px 5% 80px;
+  }
+
+  /* animated sun rays bg */
+  .hero-bg {
+    position: absolute; inset: 0; z-index: 0;
+    background: radial-gradient(ellipse 80% 80% at 70% 50%, rgba(229,16,16,0.08) 0%, transparent 70%),
+                radial-gradient(ellipse 40% 40% at 70% 50%, rgba(255,184,0,0.06) 0%, transparent 60%);
+  }
+
+  .sun-rays {
+    position: absolute;
+    right: -10%;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 700px; height: 700px;
+    background: conic-gradient(from 0deg, transparent 0%, rgba(229,16,16,0.04) 5%, transparent 10%, rgba(255,184,0,0.03) 15%, transparent 20%, rgba(229,16,16,0.04) 25%, transparent 30%, rgba(255,184,0,0.03) 35%, transparent 40%, rgba(229,16,16,0.04) 45%, transparent 50%, rgba(255,184,0,0.03) 55%, transparent 60%, rgba(229,16,16,0.04) 65%, transparent 70%, rgba(255,184,0,0.03) 75%, transparent 80%, rgba(229,16,16,0.04) 85%, transparent 90%, rgba(255,184,0,0.03) 95%, transparent 100%);
+    border-radius: 50%;
+    animation: rotateSun 30s linear infinite;
+  }
+
+  @keyframes rotateSun { to { transform: translateY(-50%) rotate(360deg); } }
+
+  .grid-overlay {
+    position: absolute; inset: 0; z-index: 0;
+    background-image:
+      linear-gradient(rgba(229,16,16,0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(229,16,16,0.04) 1px, transparent 1px);
+    background-size: 60px 60px;
+  }
+
+  .hero-content {
+    position: relative; z-index: 2;
+    max-width: 640px;
+  }
+
+  .hero-badge {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: rgba(229,16,16,0.12);
+    border: 1px solid rgba(229,16,16,0.3);
+    border-radius: 2px;
+    padding: 6px 14px;
+    font-family: 'Rajdhani', sans-serif;
+    font-weight: 600; font-size: 0.75rem;
+    letter-spacing: 2.5px; text-transform: uppercase;
+    color: var(--red);
+    margin-bottom: 28px;
+    animation: fadeUp .8s ease both;
+  }
+
+  .badge-dot {
+    width: 6px; height: 6px; border-radius: 50%;
+    background: var(--red);
+    animation: pulse 2s infinite;
+  }
+
+  @keyframes pulse {
+    0%,100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.5; transform: scale(1.3); }
+  }
+
+  .hero h1 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(3.5rem, 8vw, 7rem);
+    line-height: 0.92;
+    letter-spacing: 2px;
+    margin-bottom: 24px;
+    animation: fadeUp .8s .15s ease both;
+  }
+
+  .hero h1 .line-red { color: var(--red); display: block; }
+  .hero h1 .line-outline {
+    -webkit-text-stroke: 1.5px rgba(245,245,240,0.3);
+    color: transparent;
+    display: block;
+  }
+
+  .hero-desc {
+    font-size: 1.05rem;
+    line-height: 1.7;
+    color: rgba(245,245,240,0.65);
+    max-width: 480px;
+    margin-bottom: 40px;
+    animation: fadeUp .8s .3s ease both;
+  }
+
+  .hero-actions {
+    display: flex; gap: 16px; flex-wrap: wrap;
+    animation: fadeUp .8s .45s ease both;
+  }
+
+  .btn-primary {
+    display: inline-flex; align-items: center; gap: 10px;
+    background: var(--red);
+    color: #fff;
+    padding: 15px 32px;
+    font-family: 'Rajdhani', sans-serif;
+    font-weight: 700; font-size: 0.9rem;
+    letter-spacing: 2px; text-transform: uppercase;
+    text-decoration: none;
+    border-radius: 2px;
+    transition: transform .2s, box-shadow .2s;
+    box-shadow: 0 0 30px rgba(229,16,16,0.3);
+  }
+
+  .btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 40px rgba(229,16,16,0.45);
+  }
+
+  .btn-outline {
+    display: inline-flex; align-items: center; gap: 10px;
+    border: 1.5px solid rgba(245,245,240,0.25);
+    color: var(--white);
+    padding: 15px 32px;
+    font-family: 'Rajdhani', sans-serif;
+    font-weight: 700; font-size: 0.9rem;
+    letter-spacing: 2px; text-transform: uppercase;
+    text-decoration: none;
+    border-radius: 2px;
+    transition: border-color .2s, background .2s;
+  }
+
+  .btn-outline:hover {
+    border-color: var(--red);
+    background: rgba(229,16,16,0.08);
+  }
+
+  .hero-stats {
+    position: relative; z-index: 2;
+    margin-top: 70px;
+    display: flex; gap: 48px; flex-wrap: wrap;
+    animation: fadeUp .8s .6s ease both;
+    border-top: 1px solid rgba(245,245,240,0.08);
+    padding-top: 40px;
+  }
+
+  .stat-item { }
+  .stat-num {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 2.6rem;
+    color: var(--red);
+    line-height: 1;
+  }
+  .stat-label {
+    font-size: 0.78rem;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--grey);
+    margin-top: 4px;
+    font-family: 'Rajdhani', sans-serif;
+    font-weight: 600;
+  }
+
+  /* ── HERO IMAGE PANEL ── */
+  .hero-visual {
+    position: absolute;
+    right: 0; top: 0; bottom: 0;
+    width: 42%;
+    z-index: 1;
+    overflow: hidden;
+  }
+
+  .hero-visual::before {
+    content: '';
+    position: absolute; inset: 0; z-index: 2;
+    background: linear-gradient(90deg, var(--black) 0%, transparent 40%),
+                linear-gradient(0deg, var(--black) 0%, transparent 30%);
+  }
+
+  .solar-illustration {
+    width: 100%; height: 100%;
+    display: flex; align-items: center; justify-content: center;
+    padding: 120px 40px 80px;
+  }
+
+  .panel-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 6px;
+    transform: perspective(600px) rotateY(-15deg) rotateX(5deg);
+    animation: panelFloat 6s ease-in-out infinite;
+  }
+
+  @keyframes panelFloat {
+    0%,100% { transform: perspective(600px) rotateY(-15deg) rotateX(5deg) translateY(0); }
+    50% { transform: perspective(600px) rotateY(-15deg) rotateX(5deg) translateY(-12px); }
+  }
+
+  .solar-cell {
+    width: 80px; height: 80px;
+    background: linear-gradient(135deg, #1a2744 0%, #0d1a38 50%, #162040 100%);
+    border: 1px solid rgba(100,140,200,0.2);
+    border-radius: 3px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .solar-cell::before {
+    content: '';
+    position: absolute; inset: 6px;
+    background: repeating-linear-gradient(
+      0deg, rgba(100,140,200,0.08) 0px, rgba(100,140,200,0.08) 1px, transparent 1px, transparent 14px
+    ),
+    repeating-linear-gradient(
+      90deg, rgba(100,140,200,0.08) 0px, rgba(100,140,200,0.08) 1px, transparent 1px, transparent 14px
+    );
+  }
+
+  .solar-cell::after {
+    content: '';
+    position: absolute; inset: 0;
+    background: linear-gradient(135deg, rgba(255,184,0,0.12) 0%, transparent 60%);
+  }
+
+  .solar-cell.bright { background: linear-gradient(135deg, #1e2f55 0%, #132242 100%); }
+  .solar-cell.bright::after { background: linear-gradient(135deg, rgba(255,184,0,0.25) 0%, transparent 50%); }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ── SECTION COMMONS ── */
+  section { padding: 100px 5%; }
+
+  .section-label {
+    font-family: 'Rajdhani', sans-serif;
+    font-weight: 700; font-size: 0.72rem;
+    letter-spacing: 4px; text-transform: uppercase;
+    color: var(--red);
+    margin-bottom: 14px;
+    display: flex; align-items: center; gap: 10px;
+  }
+
+  .section-label::before {
+    content: ''; display: block;
+    width: 28px; height: 2px;
+    background: var(--red);
+  }
+
+  .section-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(2.4rem, 5vw, 4.2rem);
+    line-height: 1;
+    letter-spacing: 1.5px;
+    margin-bottom: 20px;
+  }
+
+  .section-desc {
+    font-size: 1rem;
+    line-height: 1.75;
+    color: rgba(245,245,240,0.6);
+    max-width: 540px;
+  }
+
+  /* ── MARQUEE ── */
+  .marquee-strip {
+    background: var(--red);
+    padding: 14px 0;
+    overflow: hidden;
+    white-space: nowrap;
+  }
+
+  .marquee-inner {
+    display: inline-flex; gap: 0;
+    animation: marquee 20s linear infinite;
+  }
+
+  .marquee-text {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1rem;
+    letter-spacing: 4px;
+    color: rgba(255,255,255,0.9);
+    padding: 0 32px;
+  }
+
+  .marquee-dot {
+    color: rgba(255,255,255,0.4);
+  }
+
+  @keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+  /* ── ABOUT ── */
+  .about { background: var(--dark); }
+
+  .about-inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+  }
+
+  .about-card {
+    background: var(--light-grey);
+    border: 1px solid rgba(245,245,240,0.06);
+    border-radius: 4px;
+    padding: 40px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .about-card::before {
+    content: '';
+    position: absolute; top: 0; left: 0;
+    width: 4px; height: 100%;
+    background: var(--red);
+  }
+
+  .about-card-icon {
+    font-size: 2.2rem;
+    margin-bottom: 16px;
+  }
+
+  .about-card h3 {
+    font-family: 'Rajdhani', sans-serif;
+    font-weight: 700; font-size: 1.1rem;
+    letter-spacing: 1px; text-transform: uppercase;
+    margin-bottom: 10px;
+    color: var(--white);
+  }
+
+  .about-card p {
+    font-size: 0.92rem;
+    line-height: 1.7;
+    color: rgba(245,245,240,0.55);
+  }
+
+  .about-cards { display: flex; flex-direction: column; gap: 16px; }
+
+  .epc-badge {
+    display: inline-block;
+    background: linear-gradient(135deg, var(--red), #8b0000);
+    color: #fff;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.2rem;
+    letter-spacing: 3px;
+    padding: 8px 20px;
+    border-radius: 2px;
+    margin-bottom: 24px;
+  }
+
+  .owner-info {
+    margin-top: 36px;
+    padding-top: 36px;
+    border-top: 1px solid rgba(245,245,240,0.08);
+    display: flex; align-items: center; gap: 20px;
+  }
+
+  .owner-avatar {
+    width: 56px; height: 56px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--red), #8b0000);
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.5rem;
+    color: #fff;
+    flex-shrink: 0;
+    box-shadow: 0 0 20px rgba(229,16,16,0.3);
+  }
+
+  .owner-name {
+    font-family: 'Rajdhani', sans-serif;
+    font-weight: 700; font-size: 1rem;
+    letter-spacing: 1px;
+    color: var(--white);
+  }
+
+  .owner-role {
+    font-size: 0.8rem;
+    color: var(--grey);
+    margin-top: 2px;
+  }
+
+  /* ── SERVICES ── */
+  .services { background: var(--black); }
+
+  .services-header { margin-bottom: 60px; }
+
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 2px;
+  }
+
+  .service-card {
+    background: var(--light-grey);
+    padding: 44px 36px;
+    position: relative;
+    overflow: hidden;
+    cursor: default;
+    transition: background .3s;
+    border: 1px solid rgba(245,245,240,0.04);
+  }
+
+  .service-card:hover { background: #1e1e1e; }
+
+  .service-card:hover .service-num { color: var(--red); }
+
+  .service-arrow {
+    position: absolute; top: 28px; right: 28px;
+    font-size: 1.2rem;
+    color: rgba(245,245,240,0.15);
+    transition: color .3s, transform .3s;
+  }
+
+  .service-card:hover .service-arrow {
+    color: var(--red);
+    transform: translate(3px, -3px);
+  }
+
+  .service-icon {
+    font-size: 2.4rem; margin-bottom: 20px;
+    display: block;
+    filter: grayscale(0.3);
+  }
+
+  .service-num {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 3rem;
+    color: rgba(245,245,240,0.06);
+    position: absolute; bottom: 20px; right: 28px;
+    line-height: 1;
+    transition: color .3s;
+  }
+
+  .service-card h3 {
+    font-family: 'Rajdhani', sans-serif;
+    font-weight: 700; font-size: 1.15rem;
+    letter-spacing: 1px; text-transform: uppercase;
+    margin-bottom: 12px;
+    color: var(--white);
+  }
+
+  .service-card p {
+    font-size: 0.88rem;
+    line-height: 1.7;
+    color: rgba(245,245,240,0.5);
+  }
+
+  /* ── PROJECT HIGHLIGHT ── */
+  .project { background: var(--dark); }
+
+  .project-inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: center;
+  }
+
+  .project-visual {
+    position: relative;
+    border-radius: 4px;
+    overflow: hidden;
+    aspect-ratio: 4/3;
+    background: linear-gradient(135deg, #0d1520 0%, #0a0f1a 100%);
+    display: flex; align-items: center; justify-content: center;
+  }
+
+  .project-visual::after {
+    content: '';
+    position: absolute; inset: 0;
+    background: linear-gradient(135deg, rgba(229,16,16,0.08) 0%, transparent 60%);
+  }
+
+  .khavda-map {
+    position: relative; z-index: 1;
+    text-align: center;
+  }
+
+  .location-pin {
+    font-size: 3rem;
+    animation: bounce 2s ease-in-out infinite;
+    display: block;
+    filter: drop-shadow(0 0 12px rgba(229,16,16,0.6));
+  }
+
+  @keyframes bounce {
+    0%,100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+  }
+
+  .location-name {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.8rem;
+    letter-spacing: 3px;
+    color: var(--white);
+    margin-top: 12px;
+  }
+
+  .location-sub {
+    font-size: 0.8rem;
+    color: var(--grey);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    font-family: 'Rajdhani', sans-serif;
+    font-weight: 600;
+    margin-top: 4px;
+  }
+
+  .project-tags {
+    display: flex; gap: 10px; flex-wrap: wrap;
+    margin-bottom: 28px;
+  }
+
+  .tag {
+    background: rgba(229,16,16,0.12);
+    border: 1px solid rgba(229,16,16,0.25);
+    color: var(--red);
+    font-family: 'Rajdhani', sans-serif;
+    font-weight: 600; font-size: 0.72rem;
+    letter-spacing: 2px; text-transform: uppercase;
+    padding: 5px 12px;
+    border-radius: 2px;
+  }
+
+  .project-desc {
+    font-size: 1rem;
+    line-height: 1.8;
+    color: rgba(245,245,240,0.6);
+    margin-bottom: 36px;
+  }
+
+  /* ── PRODUCTS ── */
+  .products { background: var(--black); }
+
+  .products-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    margin-top: 56px;
+  }
+
+  .product-card {
+    background: var(--light-grey);
+    border: 1px solid rgba(245,245,240,0.06);
+    border-radius: 4px;
+    padding: 36px 28px;
+    text-align: center;
+    transition: border-color .3s, transform .3s;
+  }
+
+  .product-card:hover {
+    border-color: rgba(229,16,16,0.3);
+    transform: translateY(-4px);
+  }
+
+  .product-icon { font-size: 2.8rem; margin-bottom: 16px; display: block; }
+  .product-card h3 {
+    font-family: 'Rajdhani', sans-serif;
+    font-weight: 700; font-size: 1rem;
+    letter-spacing: 1.5px; text-transform: uppercase;
+    margin-bottom: 10px;
+    color: var(--white);
+  }
+  .product-card p { font-size: 0.85rem; color: var(--grey); line-height: 1.6; }
+
+  /* ── CONTACT ── */
+  .contact { background: var(--darker); }
+
+  .contact-inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: start;
+  }
+
+  .contact-info { }
+
+  .contact-items { margin-top: 48px; display: flex; flex-direction: column; gap: 28px; }
+
+  .contact-item {
+    display: flex; gap: 20px; align-items: flex-start;
+  }
+
+  .contact-icon {
+    width: 48px; height: 48px; flex-shrink: 0;
+    background: rgba(229,16,16,0.1);
+    border: 1px solid rgba(229,16,16,0.2);
+    border-radius: 2px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.3rem;
+  }
+
+  .contact-item-label {
+    font-family: 'Rajdhani', sans-serif;
+    font-weight: 700; font-size: 0.72rem;
+    letter-spacing: 2px; text-transform: uppercase;
+    color: var(--red);
+    margin-bottom: 6px;
+  }
+
+  .contact-item-val {
+    font-size: 0.95rem;
+    color: var(--white);
+    line-height: 1.5;
+  }
+
+  .contact-item-val a {
+    color: var(--white);
+    text-decoration: none;
+    transition: color .2s;
+  }
+
+  .contact-item-val a:hover { color: var(--red); }
+
+  /* Contact Form Card */
+  .contact-form-card {
+    background: var(--light-grey);
+    border: 1px solid rgba(245,245,240,0.06);
+    border-radius: 4px;
+    padding: 44px 40px;
+  }
+
+  .contact-form-card h3 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 2rem;
+    letter-spacing: 2px;
+    margin-bottom: 28px;
+    color: var(--white);
+  }
+
+  .form-group { margin-bottom: 20px; }
+
+  .form-group label {
+    display: block;
+    font-family: 'Rajdhani', sans-serif;
+    font-weight: 600; font-size: 0.75rem;
+    letter-spacing: 2px; text-transform: uppercase;
+    color: var(--grey);
+    margin-bottom: 8px;
+  }
+
+  .form-group input,
+  .form-group textarea,
+  .form-group select {
+    width: 100%;
+    background: rgba(245,245,240,0.04);
+    border: 1px solid rgba(245,245,240,0.1);
+    border-radius: 2px;
+    padding: 13px 16px;
+    color: var(--white);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.92rem;
+    outline: none;
+    transition: border-color .25s;
+    appearance: none;
+  }
+
+  .form-group select option { background: #1a1a1a; }
+
+  .form-group input:focus,
+  .form-group textarea:focus,
+  .form-group select:focus {
+    border-color: var(--red);
+  }
+
+  .form-group textarea { height: 110px; resize: vertical; }
+
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+
+  .form-submit {
+    width: 100%;
+    background: var(--red);
+    color: #fff;
+    border: none;
+    padding: 15px;
+    font-family: 'Rajdhani', sans-serif;
+    font-weight: 700; font-size: 0.9rem;
+    letter-spacing: 3px; text-transform: uppercase;
+    cursor: pointer;
+    border-radius: 2px;
+    transition: background .2s, transform .15s;
+    margin-top: 8px;
+  }
+
+  .form-submit:hover {
+    background: #c50e0e;
+    transform: translateY(-1px);
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--black);
+    border-top: 1px solid rgba(245,245,240,0.06);
+    padding: 44px 5%;
+    display: flex;
+    align-items: center; justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 24px;
+  }
+
+  .footer-logo {
+    display: flex; align-items: center; gap: 12px;
+  }
+
+  .footer-brand {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.2rem; letter-spacing: 3px;
+    color: var(--white);
+  }
+
+  .footer-brand span { color: var(--red); }
+
+  .footer-copy {
+    font-size: 0.8rem;
+    color: var(--grey);
+    font-family: 'Rajdhani', sans-serif;
+    font-weight: 500;
+    letter-spacing: 1px;
+  }
+
+  .footer-links {
+    display: flex; gap: 28px;
+  }
+
+  .footer-links a {
+    font-family: 'Rajdhani', sans-serif;
+    font-weight: 600; font-size: 0.78rem;
+    letter-spacing: 2px; text-transform: uppercase;
+    color: var(--grey); text-decoration: none;
+    transition: color .2s;
+  }
+
+  .footer-links a:hover { color: var(--red); }
+
+  /* ── HAMBURGER ── */
+  .hamburger {
+    display: none;
+    flex-direction: column; gap: 5px;
+    cursor: pointer; padding: 4px;
+  }
+
+  .hamburger span {
+    display: block; width: 24px; height: 2px;
+    background: var(--white);
+    transition: .3s;
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 900px) {
+    .nav-links { display: none; }
+    .hamburger { display: flex; }
+
+    .hero { padding: 100px 5% 80px; }
+    .hero-visual { display: none; }
+    .hero-content { max-width: 100%; }
+
+    .about-inner { grid-template-columns: 1fr; gap: 50px; }
+    .project-inner { grid-template-columns: 1fr; }
+    .contact-inner { grid-template-columns: 1fr; gap: 50px; }
+    .products-grid { grid-template-columns: 1fr 1fr; }
+  }
+
+  @media (max-width: 580px) {
+    nav { padding: 14px 5%; }
+    section { padding: 70px 5%; }
+    .services-grid { grid-template-columns: 1fr; }
+    .products-grid { grid-template-columns: 1fr; }
+    .hero-stats { gap: 28px; }
+    .form-row { grid-template-columns: 1fr; }
+    footer { flex-direction: column; text-align: center; }
+    .footer-links { justify-content: center; }
+    .contact-form-card { padding: 28px 20px; }
+    .solar-cell { width: 60px; height: 60px; }
+  }
+
+  /* Scroll reveal */
+  .reveal {
+    opacity: 0;
+    transform: translateY(28px);
+    transition: opacity .7s ease, transform .7s ease;
+  }
+
+  .reveal.visible {
+    opacity: 1;
+    transform: none;
+  }
+
+  .reveal-delay-1 { transition-delay: .15s; }
+  .reveal-delay-2 { transition-delay: .3s; }
+  .reveal-delay-3 { transition-delay: .45s; }
+</style>
+</head>
+<body>
+
+<!-- ── NAV ── -->
+<nav>
+  <div class="nav-logo">
+    <img src="/mnt/user-data/uploads/ik.jpg" alt="IK Solar Energy Logo" onerror="this.style.display='none'">
+    <div>
+      <div class="nav-brand"><span>IK</span> SOLAR ENERGY</div>
+    </div>
+  </div>
+
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#project">Projects</a></li>
+    <li><a href="#products">Products</a></li>
+    <li><a href="#contact" class="nav-cta">Contact Us</a></li>
+  </ul>
+
+  <div class="hamburger" onclick="toggleMenu()">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+
+<!-- ── HERO ── -->
+<section class="hero" id="home">
+  <div class="hero-bg"></div>
+  <div class="sun-rays"></div>
+  <div class="grid-overlay"></div>
+
+  <div style="width:100%">
+    <div class="hero-content">
+      <div class="hero-badge">
+        <span class="badge-dot"></span>
+        EPC Contractor · Est. 2024 · Rajkot, Gujarat
+      </div>
+
+      <h1>
+        <span class="line-outline">Power</span>
+        <span class="line-red">Your Future</span>
+        <span style="color:rgba(245,245,240,0.85);">With Solar</span>
+      </h1>
+
+      <p class="hero-desc">
+        IK Solar Energy constructs Residential, Commercial, Industrial and Ground Mount Solar Projects across Gujarat. Trusted EPC Contractor. Real results.
+      </p>
+
+      <div class="hero-actions">
+        <a href="#contact" class="btn-primary">
+          ☀ Get Free Quote
+        </a>
+        <a href="#services" class="btn-outline">
+          Our Services →
+        </a>
+      </div>
+    </div>
+
+    <div class="hero-stats">
+      <div class="stat-item">
+        <div class="stat-num">4+</div>
+        <div class="stat-label">Project Types</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">100%</div>
+        <div class="stat-label">Clean Energy</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">GJ</div>
+        <div class="stat-label">Gujarat Based</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">24/7</div>
+        <div class="stat-label">Support</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="hero-visual">
+    <div class="solar-illustration">
+      <div class="panel-grid">
+        <div class="solar-cell bright"></div>
+        <div class="solar-cell"></div>
+        <div class="solar-cell bright"></div>
+        <div class="solar-cell"></div>
+        <div class="solar-cell bright"></div>
+        <div class="solar-cell"></div>
+        <div class="solar-cell bright"></div>
+        <div class="solar-cell"></div>
+        <div class="solar-cell bright"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ── MARQUEE ── -->
+<div class="marquee-strip">
+  <div class="marquee-inner">
+    <span class="marquee-text">RESIDENTIAL SOLAR</span>
+    <span class="marquee-text marquee-dot">✦</span>
+    <span class="marquee-text">COMMERCIAL SOLAR</span>
+    <span class="marquee-text marquee-dot">✦</span>
+    <span class="marquee-text">INDUSTRIAL SOLAR</span>
+    <span class="marquee-text marquee-dot">✦</span>
+    <span class="marquee-text">GROUND MOUNT</span>
+    <span class="marquee-text marquee-dot">✦</span>
+    <span class="marquee-text">EPC CONTRACTOR</span>
+    <span class="marquee-text marquee-dot">✦</span>
+    <span class="marquee-text">RAJKOT · GUJARAT</span>
+    <span class="marquee-text marquee-dot">✦</span>
+    <!-- duplicate for seamless -->
+    <span class="marquee-text">RESIDENTIAL SOLAR</span>
+    <span class="marquee-text marquee-dot">✦</span>
+    <span class="marquee-text">COMMERCIAL SOLAR</span>
+    <span class="marquee-text marquee-dot">✦</span>
+    <span class="marquee-text">INDUSTRIAL SOLAR</span>
+    <span class="marquee-text marquee-dot">✦</span>
+    <span class="marquee-text">GROUND MOUNT</span>
+    <span class="marquee-text marquee-dot">✦</span>
+    <span class="marquee-text">EPC CONTRACTOR</span>
+    <span class="marquee-text marquee-dot">✦</span>
+    <span class="marquee-text">RAJKOT · GUJARAT</span>
+    <span class="marquee-text marquee-dot">✦</span>
+  </div>
+</div>
+
+
+<!-- ── ABOUT ── -->
+<section class="about" id="about">
+  <div class="about-inner">
+    <div class="reveal">
+      <div class="section-label">Who We Are</div>
+      <h2 class="section-title">Built on Trust.<br>Powered by Sun.</h2>
+
+      <div class="epc-badge">✦ Certified EPC Contractor</div>
+
+      <p class="section-desc">
+        IK Solar Energy is a leading solar EPC contractor and distributor based in Rajkot, Gujarat. We design, supply, and install high-efficiency solar systems for every scale — from a single home to large industrial installations.
+      </p>
+
+      <div class="owner-info">
+        <div class="owner-avatar">NL</div>
+        <div>
+          <div class="owner-name">Narendra Limbasiya</div>
+          <div class="owner-role">Founder & Owner · IK Solar Energy</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="about-cards reveal reveal-delay-1">
+      <div class="about-card">
+        <div class="about-card-icon">🏗</div>
+        <h3>Complete EPC Solutions</h3>
+        <p>Engineering, Procurement, and Construction — we handle the entire solar project lifecycle from design to commissioning.</p>
+      </div>
+      <div class="about-card">
+        <div class="about-card-icon">📦</div>
+        <h3>Retailer & Distributor</h3>
+        <p>Official retailer and distributor of solar cells, semiconductors, and electronic diodes across Gujarat.</p>
+      </div>
+      <div class="about-card">
+        <div class="about-card-icon">📍</div>
+        <h3>Gujarat's Trusted Name</h3>
+        <p>Established in 2024, headquartered in Rajkot with successful projects across the state including Khavda, Kutchh.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ── SERVICES ── -->
+<section class="services" id="services">
+  <div class="services-header reveal">
+    <div class="section-label">What We Do</div>
+    <h2 class="section-title">Solar Solutions<br>For Every Scale</h2>
+  </div>
+
+  <div class="services-grid">
+    <div class="service-card reveal">
+      <span class="service-icon">🏠</span>
+      <div class="service-arrow">↗</div>
+      <h3>Residential Solar</h3>
+      <p>Power your home with clean solar energy. Custom rooftop installations for houses and apartments with maximum ROI and government subsidy assistance.</p>
+      <div class="service-num">01</div>
+    </div>
+    <div class="service-card reveal reveal-delay-1">
+      <span class="service-icon">🏢</span>
+      <div class="service-arrow">↗</div>
+      <h3>Commercial Solar</h3>
+      <p>Reduce electricity bills for your business. We design and install commercial rooftop systems tailored to your energy requirements.</p>
+      <div class="service-num">02</div>
+    </div>
+    <div class="service-card reveal reveal-delay-2">
+      <span class="service-icon">🏭</span>
+      <div class="service-arrow">↗</div>
+      <h3>Industrial Solar</h3>
+      <p>Large-scale industrial solar installations for factories and warehouses. High-capacity systems with smart monitoring and long-term warranties.</p>
+      <div class="service-num">03</div>
+    </div>
+    <div class="service-card reveal reveal-delay-3">
+      <span class="service-icon">🌄</span>
+      <div class="service-arrow">↗</div>
+      <h3>Ground Mount</h3>
+      <p>Open-field and ground-mounted solar farms. Ideal for large land parcels with maximum generation capacity and automated tracking options.</p>
+      <div class="service-num">04</div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ── PROJECT HIGHLIGHT ── -->
+<section class="project" id="project">
+  <div class="project-inner">
+    <div class="project-visual reveal">
+      <div class="khavda-map">
+        <span class="location-pin">📍</span>
+        <div class="location-name">KHAVDA</div>
+        <div class="location-sub">Kutchh · Gujarat · India</div>
+      </div>
+    </div>
+
+    <div class="reveal reveal-delay-1">
+      <div class="section-label">Flagship Project</div>
+      <h2 class="section-title">Khavda,<br>Kutchh</h2>
+
+      <div class="project-tags">
+        <span class="tag">Ground Mount</span>
+        <span class="tag">Large Scale</span>
+        <span class="tag">Gujarat</span>
+      </div>
+
+      <p class="project-desc">
+        One of IK Solar Energy's most ambitious projects — a large-scale ground mount solar installation in Khavda, Kutchh. This remote, sun-rich region of Gujarat is home to one of India's biggest solar parks, and we are proud to be a part of that green revolution.
+      </p>
+
+      <p class="project-desc" style="margin-bottom:0">
+        The Khavda project demonstrates our capability to execute end-to-end EPC contracts in challenging terrain, delivering clean, reliable energy at scale.
+      </p>
+    </div>
+  </div>
+</section>
+
+
+<!-- ── PRODUCTS ── -->
+<section class="products" id="products">
+  <div class="reveal" style="margin-bottom:0">
+    <div class="section-label">What We Supply</div>
+    <h2 class="section-title">Products &<br>Distribution</h2>
+    <p class="section-desc">As an authorized retailer and distributor, we supply premium-grade solar components across Rajkot and Gujarat.</p>
+  </div>
+
+  <div class="products-grid">
+    <div class="product-card reveal">
+      <span class="product-icon">🔆</span>
+      <h3>Solar Panels & Cells</h3>
+      <p>High-efficiency monocrystalline and polycrystalline solar panels from leading manufacturers.</p>
+    </div>
+    <div class="product-card reveal reveal-delay-1">
+      <span class="product-icon">💡</span>
+      <h3>Semiconductors</h3>
+      <p>Wide range of semiconductor components for solar inverters, charge controllers, and power electronics.</p>
+    </div>
+    <div class="product-card reveal reveal-delay-2">
+      <span class="product-icon">⚡</span>
+      <h3>Electronic Diodes</h3>
+      <p>Industrial-grade bypass and blocking diodes for solar module protection and performance optimization.</p>
+    </div>
+  </div>
+</section>
+
+
+<!-- ── CONTACT ── -->
+<section class="contact" id="contact">
+  <div class="contact-inner">
+    <div>
+      <div class="section-label reveal">Get In Touch</div>
+      <h2 class="section-title reveal">Start Your<br>Solar Journey</h2>
+      <p class="section-desc reveal">Ready to go solar? Reach out to us for a free site assessment and custom proposal.</p>
+
+      <div class="contact-items">
+        <div class="contact-item reveal">
+          <div class="contact-icon">📞</div>
+          <div>
+            <div class="contact-item-label">Phone / WhatsApp</div>
+            <div class="contact-item-val">
+              <a href="tel:+917801941652">+91 78019 41652</a><br>
+              <a href="tel:+916353941652">+91 63539 41652</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="contact-item reveal reveal-delay-1">
+          <div class="contact-icon">📍</div>
+          <div>
+            <div class="contact-item-label">Location</div>
+            <div class="contact-item-val">Rajkot, Gujarat, India</div>
+          </div>
+        </div>
+
+        <div class="contact-item reveal reveal-delay-2">
+          <div class="contact-icon">⏰</div>
+          <div>
+            <div class="contact-item-label">Business Hours</div>
+            <div class="contact-item-val">Mon – Sat: 9:00 AM – 7:00 PM</div>
+          </div>
+        </div>
+
+        <div class="contact-item reveal reveal-delay-3">
+          <div class="contact-icon">🏢</div>
+          <div>
+            <div class="contact-item-label">Company Type</div>
+            <div class="contact-item-val">EPC Contractor · Retailer · Distributor</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="contact-form-card reveal reveal-delay-1">
+      <h3>Request a Free Quote</h3>
+      <div class="form-row">
+        <div class="form-group">
+          <label>Your Name</label>
+          <input type="text" placeholder="Ramesh Patel">
+        </div>
+        <div class="form-group">
+          <label>Phone Number</label>
+          <input type="tel" placeholder="+91 98765 43210">
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Project Type</label>
+        <select>
+          <option value="">Select project type</option>
+          <option>Residential Rooftop</option>
+          <option>Commercial Rooftop</option>
+          <option>Industrial Solar</option>
+          <option>Ground Mount</option>
+          <option>Solar Products / Supply</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Location / City</label>
+        <input type="text" placeholder="Rajkot, Gujarat">
+      </div>
+      <div class="form-group">
+        <label>Message</label>
+        <textarea placeholder="Tell us about your energy needs, roof area, or monthly electricity bill..."></textarea>
+      </div>
+      <button class="form-submit" onclick="handleSubmit()">☀ Send Enquiry</button>
+    </div>
+  </div>
+</section>
+
+
+<!-- ── FOOTER ── -->
+<footer>
+  <div class="footer-logo">
+    <img src="/mnt/user-data/uploads/ik.jpg" alt="IK Solar" style="height:36px;width:auto;filter:drop-shadow(0 0 6px rgba(229,16,16,0.4));" onerror="this.style.display='none'">
+    <div class="footer-brand"><span>IK</span> Solar Energy</div>
+  </div>
+
+  <div class="footer-copy">
+    © 2024 IK Solar Energy · Rajkot, Gujarat · All rights reserved
+  </div>
+
+  <div class="footer-links">
+    <a href="#home">Home</a>
+    <a href="#services">Services</a>
+    <a href="#project">Projects</a>
+    <a href="#contact">Contact</a>
+  </div>
+</footer>
+
+
+<script>
+  // ── Scroll Reveal ──
+  const revealEls = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        observer.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.12 });
+
+  revealEls.forEach(el => observer.observe(el));
+
+  // ── Mobile Menu ──
+  let menuOpen = false;
+  const navLinks = document.querySelector('.nav-links');
+
+  function toggleMenu() {
+    menuOpen = !menuOpen;
+    navLinks.style.display = menuOpen ? 'flex' : 'none';
+    navLinks.style.flexDirection = 'column';
+    navLinks.style.position = 'absolute';
+    navLinks.style.top = '70px';
+    navLinks.style.left = '0';
+    navLinks.style.right = '0';
+    navLinks.style.background = 'rgba(10,10,10,0.97)';
+    navLinks.style.padding = '20px 5%';
+    navLinks.style.gap = '20px';
+    navLinks.style.borderBottom = '1px solid rgba(229,16,16,0.15)';
+    if (!menuOpen) navLinks.style.display = 'none';
+  }
+
+  // close on link click
+  document.querySelectorAll('.nav-links a').forEach(a => {
+    a.addEventListener('click', () => {
+      menuOpen = false;
+      navLinks.style.display = 'none';
+    });
+  });
+
+  // ── Form Submit ──
+  function handleSubmit() {
+    const btn = document.querySelector('.form-submit');
+    btn.textContent = '✓ Enquiry Sent! We\'ll call you soon.';
+    btn.style.background = '#1a7a1a';
+    btn.disabled = true;
+    setTimeout(() => {
+      btn.textContent = '☀ Send Enquiry';
+      btn.style.background = '';
+      btn.disabled = false;
+    }, 4000);
+  }
+
+  // ── Smooth nav hide/show on scroll ──
+  let lastY = 0;
+  const nav = document.querySelector('nav');
+  window.addEventListener('scroll', () => {
+    const y = window.scrollY;
+    nav.style.transform = (y > lastY && y > 80) ? 'translateY(-100%)' : 'translateY(0)';
+    nav.style.transition = 'transform .3s ease';
+    lastY = y;
+  });
+</script>
+</body>
+</html>
